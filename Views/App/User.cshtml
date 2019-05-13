@@ -1,0 +1,36 @@
+﻿@model TwitterClone.ViewModels.TwitterCloneUserViewModel
+@{
+    ViewBag.Title = $"{Model.UserName} - User Page";
+}
+
+@section Scripts {
+    <script src="~/lib/signalr/jquery.signalR.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/js/controllers/userController.js"></script>
+    <script src="~/js/TwitterCloneSignalR.js"></script>
+}
+
+<div ng-controller="userController as vm" ng-init="vm.init('@Model.UserName')">
+    <div ng-show="vm.pageReady">
+        <h1 ng-bind-template="User: {{vm.user.userName}}"></h1>
+        <h5 ng-bind-template="Email: {{vm.user.email}}"></h5>
+    </div>
+    <div ng-show="vm.pageReady" ng-cloak>
+        <h3>TwitterClones</h3>
+        <div id="post-stream" class="container-fluid" ng-show="vm.hasTwitterClones()">
+            <div class="post" ng-repeat="TwitterClonePost in vm.TwitterClonePosts | orderBy:'created_at':true" ng-class-odd="'odd'" ng-class-even="'even'">
+                <TwitterClone-post-item TwitterClone-post="TwitterClonePost"></TwitterClone-post-item>
+            </div>
+        </div>
+        <div ng-hide="vm.hasTwitterClones()">
+            <div class="alert alert-info" role="alert">
+                <i class="fa fa-exclamation-triangle"></i>
+                <span>This user has no TwitterClones.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+

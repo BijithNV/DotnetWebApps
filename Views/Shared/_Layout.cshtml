@@ -1,0 +1,93 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TwitterClone - @ViewBag.Title</title>
+    <base href="/">
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/lib/Paradeiser/dist/min/paradeiser.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="~/js/directives/TwitterCloneControls.js"></script>
+    <script src="~/js/directives/simpleControls.js"></script>
+    <script src="~/js/app-TwitterClone.js"></script>
+</head>
+<body>
+    <nav class="paradeiser">
+        <a asp-controller="App" asp-action="Index">
+            <img src="favicon.ico" alt="Logo" class="paradeiser_logo">
+            <span>TwitterClone</span>
+        </a>
+        <a asp-controller="App" asp-action="About">
+            <div class="paradeiser_icon_canvas">
+                <i class="fa fa-info-circle fa-3x"></i>
+            </div>
+            <span>About</span>
+        </a>
+
+        <a asp-controller="App" asp-action="Contact">
+            <div class="paradeiser_icon_canvas">
+                <i class="fa fa-question-circle fa-3x"></i>
+            </div>
+            <span>Contact</span>
+        </a>
+
+        @if (User.IsSignedIn())
+        {
+            <a href="/user/@User.Identity.Name">
+                <div class="paradeiser_icon_canvas">
+                    <img src="image/profilepicture/@User.Identity.Name" class="profilepicture paradeiser_logo" alt="Profile Picture" />
+                </div>
+                <span>@User.Identity.Name</span>
+            </a>
+
+        <!-- and include the dropdown aswell -->
+            <span class="paradeiser_dropdown">
+                <a href="#paradeiser-more" id="paradeiser-dropdown">
+                    <div class="paradeiser_icon_canvas">
+                        <i class="fa fa-cog fa-3x"></i>
+                    </div>
+                    <span>More</span>
+                </a>
+                <ul class="paradeiser_children" id="paradeiser-more">
+                    <li><a asp-controller="App" asp-action="MyAccount">Account Settings</a></li>
+                    <li><a asp-controller="App" asp-action="Signout">Signout</a></li>
+                    <li id="greybox"><a href="#!"></a></li>
+                </ul>
+            </span>
+        }
+        else
+        {
+            <a asp-controller="Auth" asp-action="Login">
+                <div class="paradeiser_icon_canvas">
+                    <i class="fa fa-sign-in fa-3x"></i>
+                </div>
+                <span>Login</span>
+            </a>
+
+            <a asp-controller="Auth" asp-action="Signup">
+                <div class="paradeiser_icon_canvas">
+                    <i class="fa fa-level-up fa-3x"></i>
+                </div>
+                <span>Signup</span>
+            </a>
+        }
+    </nav>
+
+    <div class="container body-content" ng-app="app-TwitterClone">
+        @RenderBody()
+        <hr />
+    </div>
+    @RenderSection("Scripts", false)
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
+    <script src="~/js/navbar.js"></script>
+</body>
+</html>

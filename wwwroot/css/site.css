@@ -1,0 +1,135 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+	margin-top:10px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.navbar-inverse {
+	background-color: #2e64b0;
+	border-color: #080808;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.nav.navbar-nav li a {
+	color: #eee;
+}
+
+.nav.navbar-nav.navbar-right li a {
+	color: #eee;
+}
+
+.navbar-inverse .navbar-brand{
+	color: #eee;
+}
+
+.navbar-inverse .btn-link{
+	color: #eee;
+}
+
+input[type=text], input[type=password], textarea {
+	width: 150px;
+}
+
+.profilepicture{
+	height:35px !important;
+	width:35px !important;
+	max-width:35px !important;
+
+	margin-top:2px;
+	position:relative;
+	border-radius: 30px;
+	overflow:hidden;
+}
+
+.profilepicture img{
+	position:absolute;
+	left:-50%; right:-50%; top:0;
+	margin:auto;
+	height:100%; width:auto;
+}
+
+.TwitterClone-post-profile-picture{
+	float:left;
+    margin-right:10px;
+}
+
+.TwitterClone-post-text{
+}
+
+.TwitterClone-post-metadata{
+    position:relative;
+    bottom:0;
+}
+
+#TwitterClone-form {
+	background-color: #68d8f2;
+	border: solid medium;
+	border-color: #02c9f6;
+	padding: 4px;
+	margin: 0;
+}
+
+#post-stream {
+	background-color: #e2eff2;
+	border: solid medium;
+	border-color: #bce7f1;
+
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.submit-btn {
+	background-color: #b1dbff;
+	margin: 10px 0 10px 0;
+}
+
+#refresh-button{
+	margin: 5px;
+}
+
+.post {
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: thin;
+	border-color: #82caf3;
+}
+
+.odd {
+	background-color: #c4e1fa;
+	
+}
+.even {
+	background-color: #daebf8;
+}
+
+.logout-form{
+	margin-top: 10px;
+	float: right;
+	margin-right: 30px;
+}
+
+#TwitterClone-form textarea {
+   resize: vertical;
+}
+
+/* 
+  Allow angular.js to be loaded in body, hiding cloaked elements until 
+  templates compile.  The !important is important given that there may be 
+  other selectors that are more specific or come later and might alter display.  
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}

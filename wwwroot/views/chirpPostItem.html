@@ -1,0 +1,11 @@
+﻿<img src="/image/ProfilePicture/{{TwitterClonePost.user.userName}}" class="profilepicture TwitterClone-post-profile-picture" alt="Profile Picture" />
+
+<div class="TwitterClone-post-metadata">
+    <small>
+        <a href="/user/{{TwitterClonePost.user.userName}}" ng-bind-template="@{{TwitterClonePost.user.userName}}"> </a>
+    </small>
+    <small class="pull-right" ng-bind="TwitterClonePost.postTime | date:'medium'"></small>
+</div>
+<div class="TwitterClone-post-text">
+    <p ng-bind="TwitterClonePost.message"></p>
+</div>

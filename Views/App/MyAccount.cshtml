@@ -1,0 +1,65 @@
+﻿@model TwitterClone.PageModels.AccountSettingsPageModel
+@{
+    ViewBag.Title = "Account Settings";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Account Settings - @Model.UserVM.UserName</h1>
+        @if (!String.IsNullOrWhiteSpace(Model.SuccessMessage))
+        {
+            <div class="alert alert-success" role="alert">@Model.SuccessMessage</div>
+        }
+        <br/>
+        <table class="table">
+            <tr>
+                <td>
+                    Email
+                </td>
+                <td>
+                    @Model.UserVM.Email
+                </td>
+
+                @if (Model.UserVM.EmailConfirmed)
+                {
+                    <td>
+                        Confirmed
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <span>Unconfirmed</span>
+                        <form class="resend-email" action="api/user/ResendConfirmationEmail" method="post">
+                            <button type="submit" class="btn btn-sm btn-info">Resend Confirmation Email</button>
+                        </form>
+                    </td>
+                }
+
+            </tr>
+            <tr>
+                <td>
+                    Password
+                </td>
+                <td>
+                    ***************
+                </td>
+                <td>
+                    <a asp-controller="Auth" asp-action="ChangePassword">Change Password</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Profile Picture
+                </td>
+                <td>
+                    <img src="image/profilepicture/@User.Identity.Name" class="profilepicture" alt="Profile Picture" />
+                </td>
+                <td>
+                    <a asp-controller="Auth" asp-action="ChangeProfilePicture">Change Profile Picture</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
